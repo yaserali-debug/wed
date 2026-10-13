@@ -1,0 +1,422 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>خطوبة محمد ومريم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&display=swap">
+<style>
+/*
+  Layout: one tall invitation card. A mihrab arch frames the verse, the names and date
+  sit on paper, and two wine bands carry the countdown and the closing prayer.
+  Single warm look by choice, so it reads the same on every guest's phone.
+*/
+:root {
+  --paper: #FBF3EC;
+  --paper-hi: #FFF9F3;
+  --paper-2: #F3E2D6;
+  --ground: #E6D0C2;
+  --wine: #5B1F2E;
+  --wine-deep: #431520;
+  --wine-night: #2F0E17;
+  --gold: #B08848;
+  --gold-soft: rgba(176, 136, 72, .45);
+  --gold-text: #7C5C25;
+  --gold-bright: #E3C283;
+  --ink: #3A2528;
+  --muted: #76595B;
+  --on-wine: #F8EADF;
+  --on-wine-muted: #DCC3B8;
+
+  --f-display: "Aref Ruqaa", "Amiri", "Noto Naskh Arabic", serif;
+  --f-quran: "Amiri Quran", "Amiri", "Noto Naskh Arabic", serif;
+  --f-body: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
+
+  --gutter: clamp(18px, 6vw, 32px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 1.1875rem;
+  line-height: 1.9;
+  letter-spacing: 0;
+  direction: rtl;
+}
+h1, h2, p, figure, blockquote { margin: 0; }
+h1, h2 { font-weight: 400; }
+
+/* shared ornament */
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ground {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: -1; opacity: .5; pointer-events: none;
+}
+.lat { fill: none; stroke: var(--gold); stroke-width: 1; }
+.lattice {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: -1; pointer-events: none;
+}
+.star {
+  width: 44px; height: 44px; flex: none;
+  fill: none; stroke: var(--line, var(--gold)); stroke-width: 1.3;
+}
+.rule {
+  display: flex; align-items: center; gap: 14px;
+  max-width: 17rem; margin: clamp(24px, 6vw, 34px) auto 0;
+}
+.rule::before, .rule::after { content: ""; flex: 1; height: 1px; }
+.rule::before { background: linear-gradient(to left, transparent, var(--line, var(--gold))); }
+.rule::after { background: linear-gradient(to right, transparent, var(--line, var(--gold))); }
+.rule .star { width: 22px; height: 22px; }
+
+/* card */
+.card {
+  position: relative;
+  max-width: 30rem;
+  margin-inline: auto;
+  background: var(--paper);
+  overflow: hidden;
+}
+@media (min-width: 34rem) {
+  body { padding-block: 36px; }
+  .card { box-shadow: 0 0 0 1px var(--gold-soft), 0 40px 70px -36px rgba(67, 21, 32, .55); }
+}
+
+/* hero arch with the verse */
+.hero { padding: clamp(20px, 6vw, 30px) var(--gutter) 0; }
+.arch {
+  position: relative; isolation: isolate; overflow: hidden;
+  border: 1.5px solid var(--gold);
+  border-radius: 999px 999px 60px 60px;
+  background: radial-gradient(130% 75% at 50% 0%, var(--paper-hi) 0%, var(--paper-2) 100%);
+  padding: clamp(112px, 33vw, 160px) clamp(26px, 9vw, 44px) 38px;
+  text-align: center;
+}
+.arch::before {
+  content: ""; position: absolute; inset: 8px;
+  border: 1px solid var(--gold-soft);
+  border-radius: 999px 999px 40px 40px;
+  pointer-events: none;
+}
+.arch .lattice { opacity: .22; }
+.apex { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); }
+.verse {
+  font-family: var(--f-quran);
+  font-size: clamp(1.3rem, 5.6vw, 1.65rem);
+  line-height: 2.3;
+  color: var(--wine);
+  text-wrap: balance;
+}
+.ref {
+  display: block; margin-top: 16px;
+  font-size: 1.0625rem; line-height: 1.6; color: var(--gold-text);
+}
+
+/* names */
+.names { padding: clamp(30px, 8vw, 44px) var(--gutter) 0; text-align: center; }
+.lead {
+  max-width: 17em; margin-inline: auto;
+  color: var(--muted); font-size: 1.25rem; line-height: 1.8; text-wrap: balance;
+}
+.couple {
+  margin-top: clamp(14px, 4vw, 22px);
+  display: flex; flex-direction: column; align-items: center;
+  font-family: var(--f-display); font-weight: 700;
+  font-size: clamp(3.8rem, 19vw, 5.8rem); line-height: 1.3;
+  color: var(--wine);
+}
+.n1 { transform: translateX(14%); }
+.n2 { transform: translateX(-14%); }
+.and {
+  display: flex; align-items: center; gap: 14px;
+  width: min(72%, 17rem);
+  font-weight: 400; font-size: clamp(1.7rem, 7vw, 2.1rem); line-height: 1.4;
+  color: var(--gold-text);
+}
+.and::before, .and::after { content: ""; flex: 1; height: 1px; }
+.and::before { background: linear-gradient(to left, transparent, var(--gold)); }
+.and::after { background: linear-gradient(to right, transparent, var(--gold)); }
+
+/* date */
+.when { padding: clamp(34px, 9vw, 48px) var(--gutter) clamp(44px, 12vw, 64px); text-align: center; }
+.eyebrow { margin-bottom: 14px; color: var(--gold-text); font-size: 1.1875rem; line-height: 1.6; }
+.date {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  max-width: 25rem; margin-inline: auto; padding-block: 6px;
+  border-block: 1px solid var(--gold-soft);
+}
+.date > * { padding: 14px 8px; min-width: 0; }
+.d-wk, .d-mo {
+  font-family: var(--f-display);
+  font-size: clamp(1.5rem, 6.4vw, 2rem); line-height: 1.4;
+  color: var(--wine);
+}
+.d-mo small {
+  display: block; font-family: var(--f-body);
+  font-size: 1.25rem; line-height: 1.4; color: var(--muted);
+}
+.d-day {
+  padding-inline: clamp(14px, 5vw, 26px);
+  border-inline: 1px solid var(--gold-soft);
+  font-weight: 700; font-size: clamp(3.6rem, 17vw, 4.8rem); line-height: 1.1;
+  color: var(--wine);
+}
+.insha { margin-top: 14px; color: var(--muted); font-size: 1.125rem; }
+
+/* bands */
+.band {
+  position: relative; isolation: isolate;
+  padding: clamp(44px, 11vw, 64px) var(--gutter);
+  text-align: center;
+}
+.band .lattice { opacity: .18; }
+.band-title {
+  margin-bottom: clamp(22px, 6vw, 30px);
+  font-family: var(--f-display);
+  font-size: clamp(1.8rem, 7.4vw, 2.3rem); line-height: 1.5;
+  color: var(--gold-bright);
+}
+.band--wine, .band--close { color: var(--on-wine); --line: var(--gold-bright); }
+.band--wine { background: linear-gradient(180deg, var(--wine) 0%, var(--wine-deep) 100%); }
+.band--wine::after, .band--close::after {
+  content: ""; position: absolute; inset: 10px 0;
+  border-block: 1px solid rgba(227, 194, 131, .32);
+  pointer-events: none;
+}
+.band--paper { background: var(--paper-2); }
+.band--paper .lattice { opacity: .2; }
+.band--paper .band-title { color: var(--wine); }
+
+/* countdown */
+.clock {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 2.6vw, 14px);
+  max-width: 26rem; margin-inline: auto;
+}
+.unit {
+  min-width: 0;
+  padding: clamp(22px, 6vw, 28px) 4px 14px;
+  border: 1px solid rgba(227, 194, 131, .55);
+  border-radius: 999px 999px 300px 300px;
+  background: rgba(248, 234, 223, .05);
+}
+.num {
+  display: block; font-weight: 700;
+  font-size: clamp(1.9rem, 8.4vw, 2.6rem); line-height: 1.2;
+  font-variant-numeric: tabular-nums; color: var(--on-wine);
+}
+.lab { display: block; margin-top: 2px; font-size: 1.0625rem; line-height: 1.5; color: var(--on-wine-muted); }
+.state {
+  max-width: 20rem; margin-inline: auto;
+  font-family: var(--f-display); font-size: 1.6rem; line-height: 1.9;
+  color: var(--on-wine);
+}
+
+/* location */
+.loc {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 18px;
+  padding: 8px 14px; border-radius: 20px;
+  color: var(--wine); text-decoration: none;
+}
+.pin {
+  display: grid; place-items: center;
+  width: 88px; height: 88px; border-radius: 50%;
+  background: var(--wine); color: var(--on-wine);
+  box-shadow: 0 0 0 6px var(--paper-2), 0 0 0 7.5px var(--gold), 0 16px 26px -12px rgba(67, 21, 32, .65);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.pin svg { width: 42px; height: 42px; }
+.pin path { fill: currentColor; }
+.pin .hole { fill: var(--wine); }
+.loc:hover .pin { transform: translateY(-3px); }
+.loc:active .pin { transform: translateY(0); }
+.loc:focus-visible { outline: 3px solid var(--wine); outline-offset: 6px; }
+.loc-sub { font-size: 1.125rem; line-height: 1.6; color: var(--muted); }
+
+/* closing */
+.band--close {
+  background: linear-gradient(180deg, var(--wine-deep) 0%, var(--wine-night) 100%);
+  padding-block: clamp(50px, 13vw, 76px) clamp(40px, 11vw, 56px);
+}
+.band--close .star:first-child { display: block; width: 56px; height: 56px; margin-inline: auto; }
+.dua {
+  margin-top: 20px;
+  font-family: var(--f-display);
+  font-size: clamp(1.9rem, 8.4vw, 2.7rem); line-height: 1.9;
+  color: var(--on-wine); text-wrap: balance;
+}
+.thanks { margin-top: 22px; font-size: 1.4rem; line-height: 1.7; color: var(--gold-bright); }
+.mono {
+  position: relative; margin: 30px auto 0;
+  width: 104px; height: 104px; border-radius: 50%;
+  border: 1px solid var(--gold-bright);
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; justify-items: center;
+  padding-inline: 14px;
+  font-family: var(--f-display); font-size: 2.2rem; line-height: 1; color: var(--gold-bright);
+}
+.mono::before {
+  content: ""; position: absolute; inset: 5px; border-radius: 50%;
+  border: 1px solid rgba(227, 194, 131, .4);
+}
+.mono .star { width: 16px; height: 16px; }
+.sign { margin-top: 26px; display: flex; flex-direction: column; gap: 2px; color: var(--on-wine-muted); }
+.sign-names { font-family: var(--f-display); font-size: 1.7rem; line-height: 1.6; color: var(--on-wine); }
+.sign-date { font-size: 1.125rem; line-height: 1.6; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pin { transition: none; }
+}
+</style>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="lattice" width="64" height="64" patternUnits="userSpaceOnUse">
+      <g class="lat">
+        <rect x="19" y="19" width="26" height="26"/>
+        <rect x="19" y="19" width="26" height="26" transform="rotate(45 32 32)"/>
+        <path d="M0 32H13.6M50.4 32H64M32 0V13.6M32 50.4V64"/>
+        <path d="M0 -5L5 0 0 5-5 0ZM64 -5L69 0 64 5 59 0ZM0 59L5 64 0 69-5 64ZM64 59L69 64 64 69 59 64Z"/>
+      </g>
+    </pattern>
+    <symbol id="khatam" viewBox="0 0 48 48">
+      <rect x="9" y="9" width="30" height="30"/>
+      <rect x="9" y="9" width="30" height="30" transform="rotate(45 24 24)"/>
+      <circle cx="24" cy="24" r="4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<svg class="ground" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#lattice)"/></svg>
+
+<main class="card" dir="rtl" lang="ar">
+
+  <header class="hero">
+    <div class="arch">
+      <svg class="lattice" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#lattice)"/></svg>
+      <svg class="star apex" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#khatam"/></svg>
+      <figure>
+        <blockquote class="verse"><p>﴿وَمِن آياتِهِ أَن خَلَقَ لَكُم مِن أَنفُسِكُم أَزواجًا لِتَسكُنوا إِلَيها وَجَعَلَ بَينَكُم مَوَدَّةً وَرَحمَةً إِنَّ في ذلِكَ لَآياتٍ لِقَومٍ يَتَفَكَّرونَ﴾</p></blockquote>
+        <figcaption class="ref">[الروم: ٢١]</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <div class="rule" aria-hidden="true">
+    <svg class="star" viewBox="0 0 48 48" focusable="false"><use href="#khatam"/></svg>
+  </div>
+
+  <section class="names" aria-labelledby="couple">
+    <p class="lead">يسعدنا دعوتكم لمشاركتنا فرحة خطوبة</p>
+    <h1 class="couple" id="couple">
+      <span class="n1">محمد</span>
+      <span class="and">و</span>
+      <span class="n2">مريم</span>
+    </h1>
+  </section>
+
+  <section class="when" aria-labelledby="when-h">
+    <h2 class="eyebrow" id="when-h">موعد الخطوبة</h2>
+    <time class="date" datetime="2026-10-16">
+      <span class="d-wk">الجمعة</span>
+      <span class="d-day">١٦</span>
+      <span class="d-mo">أكتوبر<small>٢٠٢٦</small></span>
+    </time>
+    <p class="insha">بإذن الله</p>
+  </section>
+
+  <section class="band band--wine" aria-labelledby="count-title">
+    <svg class="lattice" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#lattice)"/></svg>
+    <h2 class="band-title" id="count-title">باقي على يوم الخطوبة</h2>
+    <div class="clock" id="clock" role="timer" aria-label="العد التنازلي ليوم الخطوبة">
+      <div class="unit"><span class="num" id="cd-d">٠٠</span><span class="lab">أيام</span></div>
+      <div class="unit"><span class="num" id="cd-h">٠٠</span><span class="lab">ساعات</span></div>
+      <div class="unit"><span class="num" id="cd-m">٠٠</span><span class="lab">دقائق</span></div>
+      <div class="unit"><span class="num" id="cd-s">٠٠</span><span class="lab">ثواني</span></div>
+    </div>
+    <p class="state" id="state" hidden></p>
+  </section>
+
+  <section class="band band--paper" aria-labelledby="loc-h">
+    <svg class="lattice" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#lattice)"/></svg>
+    <h2 class="band-title" id="loc-h">موقع الخطوبة</h2>
+    <a class="loc" href="https://maps.app.goo.gl/bYofc4fZseAuvvSu8" target="_blank" rel="noopener noreferrer" aria-label="افتح موقع الخطوبة على خرائط جوجل">
+      <span class="pin">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 2.2c-3.9 0-7 3.1-7 7 0 5.1 7 12.6 7 12.6s7-7.5 7-12.6c0-3.9-3.1-7-7-7z"/>
+          <circle class="hole" cx="12" cy="9.2" r="2.8"/>
+        </svg>
+      </span>
+      <span class="loc-sub">اضغط لفتح الموقع على خرائط جوجل</span>
+    </a>
+  </section>
+
+  <footer class="band band--close">
+    <svg class="lattice" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#lattice)"/></svg>
+    <svg class="star" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#khatam"/></svg>
+    <p class="dua">اللهم بارك لهما واجمع بينهما على خير</p>
+    <div class="rule" aria-hidden="true">
+      <svg class="star" viewBox="0 0 48 48" focusable="false"><use href="#khatam"/></svg>
+    </div>
+    <p class="thanks">بحضوركم تكتمل فرحتنا</p>
+    <div class="mono" aria-hidden="true">
+      <span>م</span>
+      <svg class="star" viewBox="0 0 48 48" focusable="false"><use href="#khatam"/></svg>
+      <span>م</span>
+    </div>
+    <p class="sign">
+      <span class="sign-names">محمد ومريم</span>
+      <span class="sign-date">١٦ أكتوبر ٢٠٢٦</span>
+    </p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  // Friday 16 Oct 2026, start of the day, Cairo time (UTC+3). No hour was given for the party.
+  var TARGET = new Date("2026-10-16T00:00:00+03:00").getTime();
+  var DAY = 86400000;
+  var DIGITS = "٠١٢٣٤٥٦٧٨٩";
+
+  function $(id) { return document.getElementById(id); }
+  var clock = $("clock"), state = $("state"), title = $("count-title");
+  var cd = { d: $("cd-d"), h: $("cd-h"), m: $("cd-m"), s: $("cd-s") };
+
+  function ar(n) {
+    var s = String(n);
+    if (s.length < 2) s = "0" + s;
+    return s.replace(/[0-9]/g, function (c) { return DIGITS.charAt(+c); });
+  }
+
+  function tick() {
+    var left = TARGET - Date.now();
+    if (left > 0) {
+      var s = Math.floor(left / 1000);
+      cd.d.textContent = ar(Math.floor(s / 86400));
+      cd.h.textContent = ar(Math.floor((s % 86400) / 3600));
+      cd.m.textContent = ar(Math.floor((s % 3600) / 60));
+      cd.s.textContent = ar(s % 60);
+      title.textContent = "باقي على يوم الخطوبة";
+      clock.hidden = false;
+      state.hidden = true;
+    } else if (left > -DAY) {
+      title.textContent = "النهارده يوم الفرحة";
+      state.textContent = "الخطوبة النهارده بإذن الله، وفرحتنا بحضوركم";
+      clock.hidden = true;
+      state.hidden = false;
+    } else {
+      title.textContent = "الحمد لله";
+      state.textContent = "تمّت الخطوبة، وشكرًا لكل من شاركنا فرحتنا";
+      clock.hidden = true;
+      state.hidden = false;
+    }
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+</body></html>
